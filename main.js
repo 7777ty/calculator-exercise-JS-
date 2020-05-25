@@ -12,7 +12,6 @@ let result=document.getElementsByClassName('result');
 
 
 ul.addEventListener('click',(e)=>{
-    console.log(currentInput[0].innerHTML);
     if (currentInput[0].innerHTML===''){
         return
     }
@@ -30,6 +29,13 @@ ul.addEventListener('click',(e)=>{
                 currentInput[0].innerHTML += input;
             }
             return;
+        }
+        if(currentOutput[length-1]==='0'){
+            for(let i=length-1; i>=0;i--){
+                if(operatorString.includes(currentOutput[i])){
+                    return;
+                }
+            }
         }
         if(operatorString.includes(currentOutput[length-1]) && input==='.'){return;}
         if(currentOutput.includes('.') && input==='.'){

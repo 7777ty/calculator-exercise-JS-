@@ -132,8 +132,6 @@ var suffixExpression = [];
 var numberStack = [];
 var result = document.getElementsByClassName('result');
 ul.addEventListener('click', function (e) {
-  console.log(currentInput[0].innerHTML);
-
   if (currentInput[0].innerHTML === '') {
     return;
   }
@@ -155,6 +153,14 @@ ul.addEventListener('click', function (e) {
       }
 
       return;
+    }
+
+    if (currentOutput[length - 1] === '0') {
+      for (var i = length - 1; i >= 0; i--) {
+        if (operatorString.includes(currentOutput[i])) {
+          return;
+        }
+      }
     }
 
     if (operatorString.includes(currentOutput[length - 1]) && input === '.') {
